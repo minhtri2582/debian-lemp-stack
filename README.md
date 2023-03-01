@@ -1,9 +1,21 @@
 ### Start docker
 ```
+git clone git@git.elidev.info:tri.do/debian-lemp-stack.git
+cd debian-lemp-stack
+ls -l
+> Output:
+total 32
+-rw-r--r--   1 trido  staff  1430 Mar  1 14:01 Dockerfile
+-rw-r--r--   1 trido  staff  1634 Mar  1 14:11 README.md
+drwxr-xr-x  25 trido  staff   800 Mar  1 13:54 app
+-rw-r--r--   1 trido  staff   368 Mar  1 13:37 docker-compose.yaml
+-rw-r--r--   1 trido  staff   480 Mar  1 13:32 nginx.conf
+
+## Edit docker-compose.yaml to fix your demand.
 docker-compose up -d
 ``` 
 
-### List docker status
+### List docker
 ```
 docker-compose ps
 
@@ -56,8 +68,12 @@ DB_DATABASE=app
 DB_USERNAME=app
 DB_PASSWORD=laravel
 ```
-> Run Composer
+> Configure Laravel
 ```
-docker-compose exec cd /var/www/html && composer install
+docker-compose exec app composer install
+docker-compose exec app php artisan migrate
+docker-compose exec app php artisan key:generate
 ```
+
+> You can now open http://localhost:8080
 
