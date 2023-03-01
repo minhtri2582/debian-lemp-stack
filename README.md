@@ -28,7 +28,7 @@ debian11nginx_app_1   /bin/sh -c chown mysql:mys ...   Up      0.0.0.0:8080->80/
 ```
 
 ### Init database
-> Run this for the first time only. Database shall be stored in folder db_data next time
+> Run this for the first time only. Database shall be stored in folder db_data pernemently
 ```
 # Create database
 docker-compose exec app mysql -e "create database app"
