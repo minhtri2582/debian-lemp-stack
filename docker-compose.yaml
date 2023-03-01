@@ -8,7 +8,8 @@ services:
       #- ./nginx.conf /etc/nginx/sites-available/default  ## if you want to override nginx
     restart: always
     ports:
-      - "8080:80"
+      - "8080:80"  # web expose
+      - "33306:3306"  # mysql expose
     restart: always
     environment:
       EXAMPLE: app
