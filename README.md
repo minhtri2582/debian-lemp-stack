@@ -73,6 +73,7 @@ DB_PASSWORD=laravel
 docker-compose exec app composer install
 docker-compose exec app php artisan migrate
 docker-compose exec app php artisan key:generate
+chown www-data:www-data app/storage
 ```
 
 > You can now open http://localhost:8080
