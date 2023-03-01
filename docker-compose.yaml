@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   app:
-    image: minhtri2582/debian11-nginx:latest
+    image: minhtri2582/debian-lamp-stack:latest
     volumes:
       - db_data:/var/lib/mysql
       - ./app:/var/www/html
