@@ -1,3 +1,8 @@
+## DEBIAN LEMP STACK
+- Debian 11 bullseye
+- Mariadb 10.6
+- PHP 8.2  
+
 ### Start docker
 ```
 git clone git@git.elidev.info:tri.do/debian-lemp-stack.git
