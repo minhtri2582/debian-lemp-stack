@@ -5,7 +5,7 @@
 
 ### Start docker
 ```
-git clone git@git.elidev.info:tri.do/debian-lemp-stack.git
+git clone git@github.com:minhtri2582/debian-lemp-stack.git
 cd debian-lemp-stack
 ls -l
 > Output:
