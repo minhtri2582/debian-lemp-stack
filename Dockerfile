@@ -21,6 +21,7 @@ RUN apt install php8.2-mbstring git unzip -y
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
+WORKDIR /var/www/html
 EXPOSE 80
 STOPSIGNAL SIGTERM
 CMD chown mysql:mysql /var/lib/mysql -Rf && /etc/init.d/mariadb start && /etc/init.d/php8.2-fpm start && nginx -g "daemon off;"
