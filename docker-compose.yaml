@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  app:
+    image: minhtri2582/debian11-nginx:latest
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./app:/var/www/html
+      #- ./nginx.conf /etc/nginx/sites-available/default  ## if you want to override nginx
+    restart: always
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      EXAMPLE: app
+volumes:
+  db_data:
