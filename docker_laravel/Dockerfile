@@ -13,7 +13,7 @@ COPY ./laravel.ini /etc/php/8.2/fpm/conf.d/laravel.ini
 # INSTALL NGINX
 RUN apt-get install nginx -y
 COPY nginx.conf /etc/nginx/
-COPY sites/default.conf /etc/nginx/sites-available/default
+COPY sites/default.conf /etc/nginx/sites-available/default.conf
 
 ## INSTALL COMPOSER
 RUN apt install php8.2-mbstring git unzip -y
@@ -26,8 +26,16 @@ COPY supervisord.conf /etc/supervisor/
 # INSTALL VIM
 RUN apt update && apt install vim -y
 
+# Ensure PHP logs are captured by the container
+ENV LOG_CHANNEL=stderr
+
 WORKDIR /var/www/html
 EXPOSE 80 443
-STOPSIGNAL SIGTERM
-CMD /etc/init.d/php8.2-fpm start && /usr/bin/supervisord
+
+# Ensure the entrypoint file can be run
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD /etc/init.d/php8.2-fpm start && /usr/bin/supervisord -n
 
